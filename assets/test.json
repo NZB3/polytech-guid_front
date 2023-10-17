@@ -1,0 +1,227 @@
+[
+  {
+       "id":"01",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4201",
+       "type": "Аудитория"
+  },
+  {
+       "id":"02",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4202",
+       "type": "Аудитория"
+  },
+  {
+       "id":"03",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4203",
+       "type": "Аудитория"
+  },
+  {
+       "id":"04",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4204",
+       "type": "Аудитория"
+  },
+  {
+       "id": "05",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4205",
+       "type": "Аудитория"
+  },
+  {
+       "id": "06",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4206",
+       "type": "Аудитория"
+  },
+  {
+       "id": "07",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4207",
+       "type": "Аудитория"
+  },
+  {
+       "id": "08",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4208",
+       "type": "Аудитория"
+  },
+  {
+       "id": "09",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4209",
+       "type": "Аудитория"
+  },
+  {
+       "id": "10",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4210",
+       "type": "Аудитория"
+  },
+  {
+       "id": "11",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4211",
+       "type": "Аудитория"
+  },
+  {
+       "id": "12",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4212",
+       "type": "Аудитория"
+  },
+  {
+       "id": "13",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4213",
+       "type": "Аудитория"
+  },
+  {
+       "id": "14",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4205A",
+       "type": "Аудитория"
+  },
+  {
+       "id": "15",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4206A",
+       "type": "Аудитория"
+  },
+  {
+       "id": "16",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4207A",
+       "type": "Библиотека"
+  },
+  {
+       "id":"17",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4208А",
+       "type": "Буфет"
+  },
+  {
+       "id":18,
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4209А",
+       "type": "Коворкинг"
+  },
+  {
+       "id":"19",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4210А",
+       "type": "Лаборатория"
+  },
+  {
+       "id":"20",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4211А-1",
+       "type": "Аудитория"
+  },
+  {
+       "id": "21",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4211А-2",
+       "type": "Аудитория"
+  },
+  {
+       "id": "22",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4212А",
+       "type": "Аудитория"
+  },
+  {
+       "id": "23",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4201А",
+       "type": "Аудитория"
+  },
+  {
+       "id": "24",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4202А-Л",
+       "type": "Аудитория"
+  },
+  {
+       "id": "25",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4202А-П",
+       "type": "Аудитория"
+  },
+  {
+       "id": "26",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "4204А",
+       "type": "Аудитория"
+  },
+ {
+   "id": "27",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "#",
+       "type": "Туалет женский"
+ 
+ },
+ {
+   "id": "28",
+       "campus": "AВ",
+       "corpus":"4",
+       "floor": "2",
+       "number": "#",
+       "type": "Туалет мужской"
+ }
+ ]

@@ -1,0 +1,22 @@
+@use 'variables' as *;
+
+@mixin media($media) {
+    @if $media == smallest {
+      @media only screen and (max-width: $small) { @content; }
+    }
+    @else if $media == mobile {
+      @media only screen and (max-width: $mobile) { @content; }
+    }
+    @else if $media == tablet {
+      @media only screen and (max-width: $tablet) { @content; }
+    }
+    @else if $media == desktop {
+      @media only screen and (max-width: $desktop) { @content; }
+    }
+    @else if $media == widescreen {
+      @media only screen and (max-width: $widescreen) { @content; }
+    } 
+    @else if $media == fullhd {
+      @media only screen and (max-width: $fullhd) { @content; }
+    }
+  }
