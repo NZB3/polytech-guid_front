@@ -1,3 +1,36 @@
+<script>
+import infoData from '~/assets/dictionaries/aud_info.json';
+
+export default {
+  props: {
+    audNumber: String,
+  },
+  data() {
+    return {
+      item: {
+        id: 7,
+        campus: "АВ",
+        corpus: "5",
+        floor: "1",
+        number: "5105",
+        type: "Проектное бюро",
+        desc: "Компьютерный класс"
+      },
+      info: [],
+    }
+  },
+  mounted() {
+    this.info = infoData
+  },
+  watch: {
+    audNumber(newVal) {
+      this.item = this.info.filter(d => d.number === newVal)[0];
+      console.log(this.item);
+    }
+  }
+}
+</script>
+
 <template>
   <div class="info">
     <div class="info__item">
@@ -36,44 +69,12 @@
   </div>
 </template>
 
-<script>
-import infoData from '~/assets/dictionaries/aud_info.json';
-
-export default {
-  props: {
-    audNumber: String,
-  },
-  data() {
-    return {
-      item: {
-        id: 7,
-        campus: "АВ",
-        corpus: "5",
-        floor: "1",
-        number: "5105",
-        type: "Проектное бюро",
-        desc: "Компьютерный класс"
-      },
-      info: [],
-    }
-  },
-  mounted() {
-    this.info = infoData
-  },
-  watch: {
-    audNumber(newVal) {
-      this.item = this.info.filter(d => d.number === newVal)[0];
-      console.log(this.item);
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
 @use "~/assets/scss/abstract/variables";
 @use "~/assets/scss/abstract/mixins" as *;
 
 .info {
+  width:inherit;
   display: flex;
   flex-direction: column;
   align-items: center;

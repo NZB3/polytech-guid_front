@@ -1,18 +1,3 @@
-<template>
-  <div class="accordion" v-for="campus in campuses" :key="campus">
-      <div class="accordion__item">
-        <button class="accordion__button" @click="choose">{{ campus.name }} "{{campus.short_name}}"</button>
-        <ul class="accordion__list">
-          <li v-for="item in campus.corpuses" :key="item" class="accordion__list-item">
-            <NuxtLink :to="{ path: 'map', query: { campus: campus.short_name, corpus: item.split(' ')[1] } }"
-                      class="accordion__list-text">{{ item }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </div>
-  </div>
-</template>
-
 <script>
 export default {
   data() {
@@ -45,9 +30,9 @@ export default {
         },
         {
           name: "ул. Павла Корчагина д. 22",
-          corpuses: [],
+          corpuses: ["Корпус 1", "Корпус 2"],
           short_name: "ПК",
-          short_corpuses: [],
+          short_corpuses: ["1","2"],
         }
       ]
     }
@@ -63,11 +48,28 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div class="accordion" v-for="campus in campuses" :key="campus">
+      <div class="accordion__item">
+        <button class="accordion__button" @click="choose">{{ campus.name }} "{{campus.short_name}}"</button>
+        <ul class="accordion__list">
+          <li v-for="item in campus.corpuses" :key="item" class="accordion__list-item">
+            <NuxtLink :to="{ path: 'map', query: { campus: campus.short_name, corpus: item.split(' ')[1] } }"
+                      class="accordion__list-text">{{ item }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
 @use "~/assets/scss/abstract/variables";
 @use "~/assets/scss/abstract/mixins" as *;
 
 .accordion {
+  width: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,11 +99,9 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
 
-    @include media(tablet) {
-    }
-
-    &_alone {
+    &__alone {
       background-color: variables.$backgroung;
       width: 100%;
       box-shadow: 0 8px 9px rgba(0, 0, 0, 0.4);
@@ -109,32 +109,27 @@ export default {
       display: flex;
       justify-content: center;
       margin-bottom: 10px;
+    }
 
-      @include media(tablet) {
+
+    &__button {
+      width: 100%;
+      padding: 10px 0;
+      background: variables.$backgroung;
+      box-shadow: 0 8px 9px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      height: 60px;
+      border: none;
+      font-size: 16px;
+      line-height: 19.5px;
+      color: variables.$white;
+      z-index: 90;
+      cursor: pointer;
+      white-space: pre;
+      &.active~.accordion__list {
+        height: auto;
       }
     }
-  }
-
-  &__button {
-    width: 100%;
-    padding: 10px 0;
-    background: variables.$backgroung;
-    box-shadow: 0 8px 9px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    height: 60px;
-    border: none;
-    font-size: 16px;
-    line-height: 19.5px;
-    color: variables.$white;
-    z-index: 90;
-    cursor: pointer;
-    white-space: pre;
-
-
-    &.active~.accordion__list {
-      height: auto;
-    }
-  }
 
   &__list {
     display: flex;
@@ -150,6 +145,7 @@ export default {
     top: -10px;
     box-shadow: 0 8px 9px rgba(0, 0, 0, 0.25);
   }
+
 
   &__list-item {
     width: 320px;

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="nav__search search">
       <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -15,12 +14,8 @@
       </svg>
     </div>
     <div class="nav__search-result search-result">
-      <p class="search-result__text" v-for="aud in auds" :key="aud">{{ aud.campus }} {{ aud.number }} {{
-          aud.type !== '-' ?
-              `(${aud.type})` : ''
-        }}</p>
+      <p class="search-result__text" v-for="aud in auds" :key="aud">{{ aud.campus }} {{ aud.number }} {{aud.type !== '-' ? `(${aud.type})` : '' }}</p>
     </div>
-  </div>
 </template>
 
 <script>
@@ -52,11 +47,10 @@ export default {
       }
       let valSplit = newVal.split(' ');
       if (/^\d+$/.test(valSplit[0])) {
-        // this.auds = this.info.filter(d => d.number.includes(valSplit[0]));
         this.auds = this.info.filter(d => d.number.startsWith(valSplit[0]) && d.number.length > 1);
       } else if (/^\D+$/.test(valSplit[0])) {
         this.auds = this.info.filter(d => d.campus.startsWith(valSplit[0].toUpperCase()) && d.number.length > 1 && d.number != '-');
-      } else if (valSplit.length == 2) {
+      } else if (valSplit.length === 2) {
         this.auds = this.info.filter(d => d.campus.startsWith(valSplit[0].toUpperCase()) && d.number.startsWith(valSplit[1]));
       } else {
         this.auds = [];
@@ -144,7 +138,6 @@ export default {
   &__text {
     color: variables.$IOS-theme;
     padding: 5px 10px;
-    //font-weight: 500;
     font-size: 16px;
     line-height: 18px;
     border-bottom: 1px solid variables.$backgroung;
@@ -157,7 +150,6 @@ export default {
   &::-webkit-scrollbar {
     width: 5px;
     padding-right: 5px;
-    //height: 240px;
     background-color: transparent;
   }
 

@@ -1,59 +1,49 @@
 <script>
+import FloorsButtons from "~/components/FloorsButtons.vue";
 export default {
+  components: { FloorsButtons },
   data() {
     return {
       navCardState: false,
       modalState: false,
       numberOfFloors: 5,
-      b1: '',
-      b2: '',
       isAudSelected: false,
       selectedAudNumber: '',
     };
   },
   methods: {
     getAudInfo(data) {
-      if (data.aud) {
-        this.isAudSelected = true;
-      } else {
-        this.isAudSelected = false;
-      }
+      this.isAudSelected = !!data.aud;
       this.selectedAudNumber = data.aud;
       this.$emit('audInfoChanged', {
         isAudSelected: this.isAudSelected,
         selectedAudNumber: this.selectedAudNumber
       });
     },
-    swap() {
-      [this.b1, this.b2] = [this.b2, this.b1];
-    },
-    choose(event) {
-      if (
-          this.activeButton != null &&
-          this.activeButton !== event.currentTarget &&
-          this.activeButton.classList.contains("active")
-      ) {
-        this.activeButton.classList.toggle("active");
-      }
-      this.activeButton = event.currentTarget;
-      event.currentTarget.classList.toggle("active");
-    },
-    arrow(event) {
-      event.currentTarget.classList.toggle("click");
-      this.$emit("toggleCard");
-    },
-    toggleNavCard() {
-      this.navCardState = !this.navCardState;
+    updateFloor(floor) {
+      this.$emit("floorChanged", floor);
     },
   },
 };
 </script>
 
 <template>
-  <FloorsButtons class="floor-buttons" :numberOfFloors="numberOfFloors"/>
-  <ScaleFrame class="map-frame" @newSelected="getAudInfo" />
+    <div class="floor-buttons">
+      <FloorsButtons :numberOfFloors="numberOfFloors" @change="updateFloor"/>
+    </div>
+    <ScaleFrame @newSelected="getAudInfo" />
 </template>
 
 <style scoped lang="scss">
-
+  .floor-buttons {
+    position: absolute;
+    top: 40%;
+    right: 15px;
+    z-index: 1;
+  }
+  .map-frame {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
 </style>
