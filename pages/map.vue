@@ -1,11 +1,62 @@
+<script>
+import FloorsButtons from "~/components/FloorsButtons.vue";
+import Sidebar from "~/components/share/Sidebar.vue";
+import Map from "~/components/Map.vue"
+import Main from "~/components/share/Main.vue";
+
+export default {
+  data() {
+    return {
+      MapIsAudSelected: false,
+      selectedAudNumber: '',
+      b1: '',
+      b2: '',
+    };
+  },
+  components: {
+    Sidebar,
+    FloorsButtons,
+    Map,
+    Main,
+  },
+  methods: {
+    handleAudInfoChanged({ isAudSelected, selectedAudNumber }) {
+      this.MapIsAudSelected = isAudSelected;
+      this.selectedAudNumber = selectedAudNumber;
+    },
+    swap() {
+      [this.b1, this.b2] = [this.b2, this.b1];
+    },
+    choose(event) {
+      if (
+          this.activeButton != null &&
+          this.activeButton !== event.currentTarget &&
+          this.activeButton.classList.contains("active")
+      ) {
+        this.activeButton.classList.toggle("active");
+      }
+      this.activeButton = event.currentTarget;
+      event.currentTarget.classList.toggle("active");
+    },
+    arrow(event) {
+      event.currentTarget.classList.toggle("click");
+      this.$emit("toggleCard");
+    },
+    toggleNavCard() {
+      this.navCardState = !this.navCardState;
+    },
+  }
+};
+</script>
+
 <template>
   <div class="container">
     <Sidebar class="sidebar">
-      <div class="nav-card" v-if="!isAudSelected">
+      <div class="nav-card" v-if="!MapIsAudSelected">
         <div class="rout">
           <div class="inputs">
-            <input class="input" type="text" placeholder="Откуда" v-model="b1" />
-            <input class="input" type="text" placeholder="Куда" v-model="b2" />
+            <input class="input" type="text" placeholder="Откуда" v-model="b1"/>
+            <input class="input" type="text" placeholder="Куда" v-model="b2"/>
           </div>
           <svg @click="swap" class="swap" width="38" height="38" viewBox="0 0 38 38" fill="none"
                xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +69,8 @@
           </svg>
         </div>
       </div>
-      <div class="buttons" v-if="!isAudSelected">
+
+      <div class="buttons" v-if="!MapIsAudSelected">
         <button ref="male" class="button button--blue" @click="choose" style="width: 109px">
           Туалет М
         </button>
@@ -31,7 +83,7 @@
         <button ref="coworking" class="button button--purple" @click="choose" style="width: 128px">
           Коворкинг
         </button>
-        <button ref="aud" class="button button--lightred" @click="choose" style="width: 182px">
+        <button ref="aud" class="button button--lighted" @click="choose" style="width: 182px">
           Аудитории
         </button>
         <button ref="bibl" class="button button--blue" @click="choose" style="width: 182px">
@@ -41,7 +93,7 @@
           Выход
         </button>
       </div>
-      <AudInfo v-if="MapisAudSelected" :audNumber="selectedAudNumber" />
+      <AudInfo v-if="MapIsAudSelected" :audNumber="selectedAudNumber" />
     </Sidebar>
     <Main>
       <Map @audInfoChanged="handleAudInfoChanged"/>
@@ -49,51 +101,10 @@
   </div>
 </template>
 
-<script>
-import FloorsButtons from "~/components/FloorsButtons.vue";
-import Sidebar from "~/components/share/Sidebar.vue";
-import Map from "~/components/Map.vue"
-export default {
-  data() {
-    return {
-      MapisAudSelected: false,
-      selectedAudNumber: '',
-    };
-  },
-  components: {Sidebar, FloorsButtons, Map},
-  methods: {
-    handleAudInfoChanged({ isAudSelected, selectedAudNumber }) {
-      this.MapisAudSelected = isAudSelected;
-      this.selectedAudNumber = selectedAudNumber;
-    },
-  }
-};
-</script>
-
 <style lang="scss" scoped>
-@use "../assets/scss/abstract/variables";
+@use "~/assets/scss/abstract/variables";
 @use "~/assets/scss/abstract/_mixins.scss" as *;
 
-.floor-buttons {
-  align-items: center;
-  justify-content: right;
-}
-.sidebar {
-  @include media(tablet) {
-    display: none;
-  }
-}
-
-.nav-buttons {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  z-index: 1;
-
-  @include media(smallest) {
-    display: none;
-  }
-}
 
 .mobile-nav {
   display: none;
@@ -150,24 +161,6 @@ export default {
   }
 }
 
-.map-frame {
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column-reverse;
-  row-gap: 14px;
-  position: absolute;
-  top: 115px;
-  right: 25px;
-  z-index: 1;
-
-  @include media(smallest) {
-    top: 100px;
-    right: 10px;
-  }
-}
-
 .paper {
   flex-direction: column;
   display: flex;
@@ -178,23 +171,6 @@ export default {
   z-index: 1;
 }
 
-.btn {
-  width: 40px;
-  height: 40px;
-  background-color: #2e2e2e;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-
-  &:active {
-    background-color: variables.$blue;
-    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
-  }
-}
-
 .number {
   color: variables.$IOS-theme;
   font-weight: 700;
@@ -202,25 +178,6 @@ export default {
   line-height: 24px;
 }
 
-.container {
-  height: 100vh;
-  overflow: hidden;
-  margin-left: 360px;
-
-  @include media(tablet) {
-    margin-left: 0;
-    overflow: scroll;
-  }
-
-  @include media(smallest) {
-    overflow: hidden;
-  }
-}
-
-.Home {
-  top: 40px;
-  margin-left: 32px;
-}
 
 .nav-card {
   width: 100%;
@@ -276,6 +233,7 @@ export default {
 
     &.active {
       background-color: variables.$blue;
+      color: variables.$white;
     }
   }
 
@@ -284,6 +242,7 @@ export default {
 
     &.active {
       background-color: variables.$orange;
+      color: variables.$white;
     }
   }
 
@@ -292,6 +251,7 @@ export default {
 
     &.active {
       background-color: variables.$purple;
+      color: variables.$white;
     }
   }
 
@@ -300,6 +260,7 @@ export default {
 
     &.active {
       background-color: variables.$lightred;
+      color: variables.$white;
     }
   }
 
@@ -308,6 +269,7 @@ export default {
 
     &.active {
       background-color: variables.$orange;
+      color: variables.$white;
     }
   }
 
@@ -316,6 +278,7 @@ export default {
 
     &.active {
       background-color: variables.$blue;
+      color: variables.$white;
     }
   }
 
@@ -324,13 +287,14 @@ export default {
 
     &.active {
       background-color: variables.$green;
+      color: variables.$white;
     }
   }
 }
 
 .active {
-  font-weight: bold;
-  color: white;
+  background-color: variables.$white;
+  color: variables.$darkgrey;
 }
 
 .input {

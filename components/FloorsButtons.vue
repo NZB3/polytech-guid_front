@@ -1,8 +1,9 @@
 <template>
-    <Button class="btn" :ref="'button' + n" v-for="n in numberOfFloors" :key="n"
+
+    <button class="btn" :ref="'button' + n" v-for="n in numberOfFloors" :key="n"
       @click="$emit('change', { update: n }); activeFloor = n;">
       <p class="number">{{ n }}</p>
-    </Button>
+    </button>
 </template>
 
 <script>
@@ -41,14 +42,14 @@ export default {
 .btn {
   width: 40px;
   height: 40px;
-  background-color: #2e2e2e;
+  background-color: variables.$darkgrey;
   border-radius: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
   cursor: pointer;
-
+  margin-bottom: 5px;
   &:active {
     background-color: variables.$blue;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);

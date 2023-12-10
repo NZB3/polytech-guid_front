@@ -1,15 +1,14 @@
 <template>
-  <div class="map-container">
-          <Scale :map="map" :view-box="viewBox" :thin-border-on-zoom="true" :wrapper-styles="{
-            position: 'relative',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-          }" :mobilePreventScroll="true" @click="click">
-            <img src="~/assets/maps/AV.svg" alt="">
-          </Scale>
-  </div>
+  <Scale :map="map" :view-box="viewBox" :thin-border-on-zoom="true" :wrapper-styles="{
+      position: 'relative',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    }" :mobilePreventScroll="true" @click="click">
+
+    <img src="~/assets/maps/AV.svg" alt="">
+  </Scale>
 </template>
 
 <script>
@@ -75,7 +74,6 @@ export default {
 @use "~/assets/scss/abstract/mixins" as *;
 
 .map-container {
-  //width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
@@ -112,7 +110,6 @@ export default {
 
   &:hover,
   &:active {
-    transition: fill-opacity 0.2s ease;
     transition: stroke-opacity 0.2s ease;
     fill: variables.$blue;
     stroke: variables.$blue;

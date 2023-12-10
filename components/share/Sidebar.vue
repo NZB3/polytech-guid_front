@@ -1,17 +1,17 @@
 <template>
     <div class="sidebar">
-        <SearchNavButton/>
+        <Search/>
         <slot></slot>
     </div>
 </template>
 
 <script>
-import SearchNavButton from "~/components/SearchNavButton.vue";
+import Search from "~/components/Search.vue";
 import Accordion from "~/components/Accordion.vue";
 export default {
   components: {
     Accordion,
-    SearchNavButton,
+    Search,
   },
   data () {
     return{
@@ -26,9 +26,6 @@ export default {
 @use "~/assets/scss/abstract/mixins" as *;
 
 .sidebar{
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 345px;
     height: 100vh;
     background-color: variables.$darkgrey;
